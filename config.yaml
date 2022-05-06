@@ -1,0 +1,47 @@
+# Config file for server.py
+# You can override default config of server.py using this file.
+# !NOTE: Config is loaded on server start
+#        Any changes will not take effect until server is restarted
+
+#=======================MAIN==================================
+# Name that will be sent back via UDP discovery response
+SERVER_NAME: 'モニカ'
+
+# Camera resolution in format [width, height]
+#   (The smaller, the faster)
+CAM_RESOLUTION: [640, 480]
+
+# Camera frames per second (The smaller, the faster)
+CAM_FRAMERATE: 24
+
+# Client and server are the same subnet if their masked IPs are equal
+SUBNET_MASK:    255.255.255.0
+
+
+#=======================ARDUINO===============================
+# Communication with arduino
+SERIAL_BAUD_RATE: 9600
+SERIAL_PORT: /dev/ttyACM0
+
+
+#=======================NETWORKING============================
+# Control commands are sent back and forth via this port
+PORT_WEBSOCKET: 7890
+
+# UDP Discovery port that server listens to
+PORT_UDP_IN: 7891
+
+# UDP Discovery port on which server sends responses to client
+PORT_UDP_OUT: 7892
+
+# Port of http camera server
+CAM_PORT_HTTP: 8000
+
+# Port of websocket camera
+#   !NOTE: If you change this global, you have to change camera port in stream_picamera_h264/index.html
+CAM_PORT_WEBSOCKET: 9000
+
+
+
+
+
