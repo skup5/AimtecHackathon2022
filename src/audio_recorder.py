@@ -31,8 +31,9 @@ def record(dev_index, record_secs=0):
 
     if record_secs > 0:
         record_into_file(audio, chans, chunk, form_1, frames, record_secs, samp_rate, stream, wav_output_filename)
-        res = convert(wav_output_filename, 'json')
-        print(res.json())
+        res = convert(wav_output_filename)
+        # print(res.json())
+        return res.text
     else:
         data = stream.read(chunk)
 
@@ -69,4 +70,4 @@ def get_timestamp() -> float:
     return ts
 
 
-record(2, 5)
+# record(2, 5)

@@ -5,7 +5,7 @@
     "e": ["zvedni"],
     "q": ["polož"],
     "w": ["dopředu"],
-    "s": ["dozadu"],
+    "s": ["dozadu", "couvej"],
     "a": ["doleva"],
     "d": ["doprava"],
     "l": ["zapni laser"],
@@ -15,7 +15,7 @@
     " ": ["Stop", "Stůj", "Zastav", "Dost"],
     "0": ["reset"],
     "v": ["rychlost"],
-    "1": ["Zapnout světlo", "Zapnout světla", "rozsvit"],
-    "3": ["svetlo"],
-    "5": ["Vypnout světlo", "Vypnout světla", "zhasni", "tma"]
+    "1": ["Zapnout světlo", "Zapnout světla", "rozsvit", "rozsviť", "rozsviď", "policie", "benga"],
+    "3": ["svetlo", "světlo", "světla", "rožni", "roužni"],
+    "5": ["Vypnout světlo", "Vypnout světla", "zhasni", "zhasnit", "tma", "dma"]
 }

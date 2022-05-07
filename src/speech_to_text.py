@@ -26,7 +26,7 @@ def post_binary_data(file, response_format) -> Response:
     res = requests.post(url=BASE_URL,
                         data=file,
                         params={"format": response_format})
-    print('post_binary_data to ' + BASE_URL + ' -> ' + res)
+    print('post_binary_data to ' + BASE_URL + ' -> ' + str(res))
     return res
 
 
