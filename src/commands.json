@@ -5,7 +5,7 @@
     "e": ["zvedni"],
     "q": ["polož"],
     "w": ["dopředu","jeď", "pohni", "makej", "vpřed"],
-    "s": ["dozadu", "couvej", "couwej", "zouvej", "zouwej", "vzad"],
+    "s": ["dozadu", "couvej", "couwej", "zouvej", "zouwej", "vzad", "zpátky"],
     "a": ["doleva", "vlevo"],
     "d": ["doprava", "vpravo"],
     "l": ["zapni laser"],
