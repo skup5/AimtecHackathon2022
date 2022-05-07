@@ -1,0 +1,32 @@
+{
+    "SC_SPEED_UP": [],
+    "SC_SPEED_DOWN": [],
+    "SC_LIFT_UP": [],
+    "SC_LIFT_DOWN": [],
+    "SC_FORWARD": [
+        "dopředu",
+        "jeď",
+        "go"
+    ],
+    "SC_BACKWARD": [
+        "zpátky",
+        "back"
+    ],
+    "SC_LEFT": [
+        "doleva"
+    ],
+    "SC_RIGHT": [
+        "doprava"
+    ],
+    "SC_LASER_ON": [],
+    "SC_LASER_OFF": [],
+    "SC_DEBUG": [],
+    "SC_DEMO": [],
+    "SC_STOP": [
+        "stůj",
+        "stop"
+    ],
+    "SC_RESET": [],
+    "SC_VELOCITY": [],
+    "SC_LIGHT": []
+}
