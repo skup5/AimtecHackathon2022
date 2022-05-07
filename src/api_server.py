@@ -10,11 +10,15 @@ import urllib.parse
 
 from audio_recorder import record
 from commander import Commander
+from led import LedController
 
 PORT = 8000
 
 # send STOP cmd to arduino after [X] s
 STOP_DELAY = 2
+
+TURN_CONTROL_LED_ON = 'blikej'
+TURN_CONTROL_LED_OFF = 'tma'
 
 LISTEN_CMD = 'poslouchej'
 
@@ -58,7 +62,9 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def process_command(self, cmd):
         if cmd == LISTEN_CMD:
+            LedController().turn_on()
             commands = record(2, LISTEN_UNTIL)
+            LedController().turn_off()
             print(commands)
             commands = commands.split(' ')
             for command in commands:
