@@ -27,11 +27,11 @@ class Commander:
             # print(key+':')
             for human_word in actual_commands[key]:
                 # print(human_word)
-                if human_word == human_command:
+                if human_word.lower() == human_command.lower():
                     return key
 
         return ''
 
 
-searched_command = 'dozadu'
-print(searched_command + ' -> ' + Commander().translate_command(searched_command))
+# searched_command = 'Dozadu'
+# print(searched_command + ' -> ' + Commander().translate_command(searched_command))

@@ -17,10 +17,11 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     # SimpleHTTPServer.SimpleHTTPRequestHandler):
 
+    commander = Commander()
+
     def __init__(self, request, client_address, server):
         self.serialArduino = serial.Serial('/dev/ttyACM0', 9600, timeout=0)
         SimpleHTTPServer.SimpleHTTPRequestHandler.__init__(self, request, client_address, server)
-        self.commander = Commander()
 
     def send2Arduino(self, str):
         global serialArduino
@@ -31,12 +32,14 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         global lights
         # logging.error(self.headers)
         print(self.headers)
-        cmd = self.path.split("=")[1]
-        # self.serialArduino(arduino)
-        arduino_cmd = self.commander.translate_command(cmd)
-        print(cmd + ' -> "' + arduino_cmd + '"')
-        self.send2Arduino(str(arduino_cmd))
-        lights = (lights + 1) % 6
+        parameter = self.path.split("=")
+        if len(parameter) > 0:
+            cmd = urllib.parse.unquote(parameter[1])
+            # self.serialArduino(arduino)
+            arduino_cmd = self.commander.translate_command(cmd)
+            print(cmd + ' -> "' + arduino_cmd + '"')
+            self.send2Arduino(str(arduino_cmd))
+            lights = (lights + 1) % 6
         SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 
 

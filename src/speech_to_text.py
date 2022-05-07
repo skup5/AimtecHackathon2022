@@ -1,7 +1,7 @@
 import requests
 from requests import Response
 
-BASE_URL = 'https://uwebasr.zcu.cz/api/v1/CLARIN_ASR/CZ'
+BASE_URL = 'http://cak.zcu.cz:8442/api/v1/honzas/wav2vec'
 
 
 # curl request example

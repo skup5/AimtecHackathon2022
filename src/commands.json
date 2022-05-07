@@ -12,8 +12,9 @@
     "k": ["vypni laser"],
     "i": ["debag"],
     "x": ["demo"],
-    " ": ["stůj"],
+    " ": ["Stop", "Stůj", "Zastav", "Dost"],
     "0": ["reset"],
     "v": ["rychlost"],
-    "L": ["světlo"]
+    "1": ["Zapnout světlo", "Zapnout světla"],
+    "5": ["Vypnout světlo", "Vypnout světla"]
 }
