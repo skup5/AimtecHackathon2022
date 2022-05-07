@@ -33,5 +33,5 @@ class Commander:
         return ''
 
 
-searched_command = 'jeď'
+searched_command = 'dozadu'
 print(searched_command + ' -> ' + Commander().translate_command(searched_command))
