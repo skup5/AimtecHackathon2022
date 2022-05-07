@@ -2,12 +2,15 @@ import pyaudio
 import wave
 from datetime import datetime
 
+from speech_to_text import convert
 
-def record(dev_index, record_secs):
+
+def record(dev_index, record_secs=0):
     """
 
     :param dev_index: device index found by usb_mic_test.py (p.get_device_info_by_index(ii))
-    :param record_secs: seconds to record
+    :param record_secs: seconds to record. If 0, opens audio stream and returns this stream
+    :return stream
     """
     form_1 = pyaudio.paInt16  # 16-bit resolution
     chans = 1  # 1 channel
@@ -26,18 +29,24 @@ def record(dev_index, record_secs):
     print("recording")
     frames = []
 
+    if record_secs > 0:
+        record_into_file(audio, chans, chunk, form_1, frames, record_secs, samp_rate, stream, wav_output_filename)
+        res = convert(wav_output_filename, 'json')
+        print(res.json())
+    else:
+        data = stream.read(chunk)
+
+
+def record_into_file(audio, chans, chunk, form_1, frames, record_secs, samp_rate, stream, wav_output_filename):
     # loop through stream and append audio chunks to frame array
     for ii in range(0, int((samp_rate / chunk) * record_secs)):
         data = stream.read(chunk)
         frames.append(data)
-
     print("finished recording")
-
     # stop the stream, close it, and terminate the pyaudio instantiation
     stream.stop_stream()
     stream.close()
     audio.terminate()
-
     # save the audio frames as .wav file
     wavefile = wave.open(wav_output_filename, 'wb')
     wavefile.setnchannels(chans)
@@ -47,7 +56,7 @@ def record(dev_index, record_secs):
     wavefile.close()
 
 
-def get_timestamp():
+def get_timestamp() -> float:
     # Getting the current date and time
     dt = datetime.now()
 
