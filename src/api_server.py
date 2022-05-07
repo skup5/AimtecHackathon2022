@@ -19,10 +19,10 @@ serialArduino = serial.Serial('/dev/ttyACM0', 9600, timeout=0)
 
 
 def should_stop(arduino_cmd):
-    match arduino_cmd:
-        case 'w' | 's' | 'd' | 'a':
-            return True
-    return False
+    if arduino_cmd in ['w', 's', 'd', 'a']:
+        return True
+    else:
+        return False
 
 
 class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
@@ -65,4 +65,5 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     Handler = GetHandler
     httpd = SocketServer.TCPServer(("", PORT), Handler)
+    print('server is listening on ' + str(PORT))
     httpd.serve_forever()

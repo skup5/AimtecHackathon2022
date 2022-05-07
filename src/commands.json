@@ -15,6 +15,7 @@
     " ": ["Stop", "Stůj", "Zastav", "Dost"],
     "0": ["reset"],
     "v": ["rychlost"],
-    "1": ["Zapnout světlo", "Zapnout světla"],
-    "5": ["Vypnout světlo", "Vypnout světla"]
+    "1": ["Zapnout světlo", "Zapnout světla", "rozsvit"],
+    "3": ["svetlo"],
+    "5": ["Vypnout světlo", "Vypnout světla", "zhasni", "tma"]
 }
