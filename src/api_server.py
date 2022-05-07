@@ -1,16 +1,28 @@
 #!/usr/bin/env python3
 
 import http.server as SimpleHTTPServer
+import sched
 import socketserver as SocketServer
 import logging
 import serial
+import time
+import urllib.parse
 
 from commander import Commander
 
 PORT = 8000
+# send STOP cmd to arduino after [X] s
+STOP_DELAY = 2
+
 
 serialArduino = serial.Serial('/dev/ttyACM0', 9600, timeout=0)
-lights = 0
+
+
+def should_stop(arduino_cmd):
+    match arduino_cmd:
+        case 'w' | 's' | 'd' | 'a':
+            return True
+    return False
 
 
 class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
@@ -39,8 +51,15 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             arduino_cmd = self.commander.translate_command(cmd)
             print(cmd + ' -> "' + arduino_cmd + '"')
             self.send2Arduino(str(arduino_cmd))
-            lights = (lights + 1) % 6
+            if should_stop(arduino_cmd):
+                s = sched.scheduler(time.time, time.sleep)
+                s.enter(STOP_DELAY, 1, self.send_stop, ())
+                s.run()
+
         SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+
+    def send_stop(self):
+        self.send2Arduino(str(self.commander.translate_command('stop')))
 
 
 if __name__ == "__main__":
